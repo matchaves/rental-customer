@@ -2,10 +2,11 @@ plugins {
 	id 'org.springframework.boot' version '2.3.8.BUILD-SNAPSHOT'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'java'
+	id 'com.google.cloud.tools.jib' version '2.7.0'
 }
 
 group = 'com.dvdrental'
-version = '0.0.1-SNAPSHOT'
+version = '0.2'
 sourceCompatibility = '11'
 
 configurations {
@@ -36,7 +37,8 @@ dependencies {
 	//implementation 'org.springframework.cloud:spring-cloud-starter-zipkin'
 	compileOnly 'org.projectlombok:lombok'
 	//runtimeOnly 'io.micrometer:micrometer-registry-datadog'
-	//runtimeOnly 'io.micrometer:micrometer-registry-influx'
+	runtimeOnly 'io.micrometer:micrometer-registry-influx'
+	//compile 'io.micrometer:micrometer-registry-influx:latest.release'
 	//runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
 	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
