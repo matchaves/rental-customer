@@ -21,4 +21,5 @@ management:
         uri: http://127.0.0.1:8086
   endpoints:
     web:
-      expose: "*"
+      exposure:
+        include: "*"
