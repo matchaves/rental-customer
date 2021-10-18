@@ -1,0 +1,26 @@
+spring:
+  jpa:
+    database: POSTGRESQL
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://192.168.50.200:5432/dvdrental
+    username: postgres
+    password: post123
+  database:
+    driverClassname: org.postgresql.Driver
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  endpoint:
+    metrics:
+      enabled: false
+    prometheus:
+      enabled: true
+server:
+  port : 8083
