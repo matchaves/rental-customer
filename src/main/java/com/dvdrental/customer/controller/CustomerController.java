@@ -6,10 +6,7 @@ import com.dvdrental.customer.model.Film;
 import com.dvdrental.customer.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,15 +19,15 @@ public class CustomerController {
     private CustomerService customerService;
 
 
-    @GetMapping()
+    @GetMapping("/catalog")
     public List<Customer> get () {
         return customerService.getCustomer();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity getFilmById(@PathVariable("id") Long id ) {
-        Optional<Customer> film = customerService.getCustomerbyId(id);
-        return  film.map(c -> ResponseEntity.ok(film))
+    @GetMapping("")
+    public ResponseEntity getFilmById(@RequestParam Long customer_id ) {
+        Optional<Customer> customer = customerService.getCustomerbyId(customer_id);
+        return  customer.map(c -> ResponseEntity.ok(customer))
                 .orElse((ResponseEntity.notFound().build()));
     }
 
