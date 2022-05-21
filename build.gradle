@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.6.3'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id 'com.google.cloud.tools.jib' version '3.1.3'
 }
 
 group = 'com.dvdrental'
@@ -38,6 +39,18 @@ dependencyManagement {
 	imports {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
 	}
+}
+
+jib{
+	to {
+		image = 'colabdevops/customer'
+		if (project.hasProperty("tag")) {   // precisa passar variavel -Ptag=100
+			tags = [project.getProperty("tag")]
+		} else {
+			tags = ["dev"]
+		}
+	}
+
 }
 
 tasks.named('test') {

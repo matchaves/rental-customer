@@ -3,9 +3,9 @@ spring:
     database: POSTGRESQL
   datasource:
     platform: postgres
-    url: jdbc:postgresql://192.168.50.200:5432/dvdrental
+    url: jdbc:postgresql://${IP_PG:192.168.50.210}:5432/dvdrental
     username: postgres
-    password: post123
+    password: ${PASS_PG:post123}
   database:
     driverClassname: org.postgresql.Driver
 management:
@@ -23,4 +23,5 @@ management:
     prometheus:
       enabled: true
 server:
+  contextPath: ${CONTEXT:/}
   port : ${PORT:8080}
